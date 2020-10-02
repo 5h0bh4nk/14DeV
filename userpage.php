@@ -153,8 +153,6 @@
         $("#login").click(function(){
             $("#loginModal").modal();
         });
-           
-        });
     </script>
 
     </body>
