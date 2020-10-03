@@ -5,10 +5,13 @@
   $contact=$_POST['contactnumber'];
   $branch=$_POST['branch'];
   $pwd=$_POST['pass'];
-     $search="select name from admininfo where faculty_id ='$regis'";
-     if(mysqli_query($con,$search)==false)
+
+     $search="select * from admininfo where faculty_id ='$regis'";
+     $result=mysqli_query($con,$search);
+    $count  = mysqli_num_rows($result);
+     if($count==0)
      {
-  	 $insertquery="insert into admininfo(name,faculty_id,branch,contactnum,password)values('$fullname','$regis','$contact','$branch','$pwd')";
+  	 $insertquery="insert into admininfo(name,faculty_id,branch,contactnum,password)values('$fullname','$regis','$branch','$contact','$pwd')";
      if(!mysqli_query($con,$insertquery))
      	echo mysqli_error($con);
      else

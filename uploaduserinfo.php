@@ -6,8 +6,10 @@
   $stu_course=$_POST['course'];
   $pwd=$_POST['pass'];
   
-    $search="select name from userinfo where registration_num ='$regis'";
-     if(mysqli_query($con,$search)==false)
+    $search="select * from userinfo where registration_num ='$regis'";
+    $result=mysqli_query($con,$search);
+    $count  = mysqli_num_rows($result);
+     if($count==0)
      {
   	 $insertquery="insert into userinfo(name,registration_num,contactnum,course,password)values('$fullname','$regis','$contact','$stu_course','$pwd')";
      if(!mysqli_query($con,$insertquery))
